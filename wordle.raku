@@ -6,7 +6,7 @@ use Terminal::Print < T >;
 
 unit sub MAIN(:$chars = 5, :$tries = 6);
 
-my @wordlist = '/usr/share/dict/SOWPODS'.IO.words;
+my @wordlist = 'SOWPODS.txt'.IO.words;
 my $words = @wordlist.grep(*.chars == $chars).Set;
 
 T.initialize-screen;
@@ -20,8 +20,8 @@ my $Y = ($h div 2) - ($tries div 2) - 2;
 my ($x, $y);
 
 my %letters = ('A' .. 'Z') Z=> <
-    Ａ	Ｂ 	Ｃ 	Ｄ 	Ｅ 	Ｆ 	Ｇ 	Ｈ 	Ｉ 	Ｊ 	Ｋ 	Ｌ 	Ｍ
-    Ｎ 	Ｏ  Ｐ 	Ｑ 	Ｒ 	Ｓ 	Ｔ 	Ｕ 	Ｖ 	Ｗ 	Ｘ 	Ｙ 	Ｚ 	
+    Ａ   Ｂ   Ｃ   Ｄ   Ｅ   Ｆ   Ｇ   Ｈ   Ｉ   Ｊ   Ｋ   Ｌ   Ｍ
+    Ｎ   Ｏ   Ｐ   Ｑ   Ｒ   Ｓ   Ｔ   Ｕ   Ｖ   Ｗ   Ｘ   Ｙ   Ｚ
 >;
 
 my $used  = Set();

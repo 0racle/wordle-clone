@@ -19,7 +19,7 @@ GetOptions(
     'tries=n' => \(my $tries = 6),
 );
 
-my @wordlist = split(' ', path('/usr/share/dict/SOWPODS')->slurp);
+my @wordlist = split(' ', path('SOWPODS.txt')->slurp);
 my %words    = map { $_ => 1 } grep { length == 5 } @wordlist;
 
 my $scr = Term::Screen->new;
@@ -34,8 +34,8 @@ my $Y = ($h / 2) - ($tries / 2) - 2;
 my ($x, $y);
 
 my %letters = mesh ['A' .. 'Z'], [qw<
-      Ａ	Ｂ 	Ｃ 	Ｄ 	Ｅ 	Ｆ 	Ｇ 	Ｈ 	Ｉ 	Ｊ 	Ｋ 	Ｌ 	Ｍ
-      Ｎ 	Ｏ  Ｐ 	Ｑ 	Ｒ 	Ｓ 	Ｔ 	Ｕ 	Ｖ 	Ｗ 	Ｘ 	Ｙ 	Ｚ
+    Ａ   Ｂ   Ｃ   Ｄ   Ｅ   Ｆ   Ｇ   Ｈ   Ｉ   Ｊ   Ｋ   Ｌ   Ｍ
+    Ｎ   Ｏ   Ｐ   Ｑ   Ｒ   Ｓ   Ｔ   Ｕ   Ｖ   Ｗ   Ｘ   Ｙ   Ｚ
 >];
 
 my (%good, %found, %used);
