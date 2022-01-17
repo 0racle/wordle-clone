@@ -27,6 +27,13 @@ $scr->curinvis;
 $scr->noecho;
 $scr->clrscr;
 
+$SIG{INT} = sub { exit };
+
+END {
+    $scr->curvis;
+    $scr->echo;
+}
+
 my ($h, $w) = ($scr->rows, $scr->cols);
 my $X = ($w / 2) - 1;
 my $Y = ($h / 2) - ($tries / 2) - 2;
