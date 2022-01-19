@@ -10,8 +10,8 @@ my @wordlist = 'SOWPODS.txt'.IO.words;
 my $words = @wordlist.grep(*.chars == $chars).Set;
 
 T.initialize-screen;
-signal(SIGINT).tap: { exit }
 END { T.shutdown-screen }
+signal(SIGINT).tap: { exit }
 
 my ($h, $w) = (T.rows, T.columns);
 my $X = ($w div 2) - 1;
@@ -70,6 +70,7 @@ start-game();
 react {
     whenever key-pressed(:!echo) -> $k {
         given $k {
+            when .ord == 3 { exit }
             when $turn == $tries {
                 T.print-string: $x, $Y + $tries, ' ' x ($chars × 2);
                 @word =  $words.keys.pick.comb;

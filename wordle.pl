@@ -32,6 +32,7 @@ $SIG{INT} = sub { exit };
 END {
     $scr->curvis;
     $scr->echo;
+    exec('tput reset');
 }
 
 my ($h, $w) = ($scr->rows, $scr->cols);
@@ -91,6 +92,9 @@ start_game();
 
 while (1) {
     my $k = uc($scr->getch);
+    if (ord($k) == 3) {
+        exit
+    }
     if ($turn == $tries) {
         $scr->at($Y + $tries, $x)->puts(' ' x ($chars * 2));
         start_game();
